@@ -60,8 +60,9 @@ public class MarkdownParseTest {
     public void testFile6() throws IOException{
         Path fileName = Path.of("test-file6.md");
         String content = Files.readString(fileName);
+        ArrayList<String> empty = new ArrayList<>();
 
-        assertEquals(MarkdownParse.getLinks(content), List.of("page.com"));
+        assertEquals(MarkdownParse.getLinks(content), empty);
     }
 
     @Test
@@ -79,7 +80,16 @@ public class MarkdownParseTest {
     public void testFile8() throws IOException{
         Path fileName = Path.of("test-file8.md");
         String content = Files.readString(fileName);
-        assertEquals(MarkdownParse.getLinks(content), List.of("a link on the first line"));
+        ArrayList<String> empty = new ArrayList<>();
+
+        assertEquals(MarkdownParse.getLinks(content), empty);
+    }
+    @Test
+    public void fail() throws IOException{
+        Path fileName = Path.of("test-file8.md");
+        String content = Files.readString(fileName);
+        
+        assertEquals(MarkdownParse.getLinks(content), List.of("https://something.com","some-page.html"));
     }
 
 }

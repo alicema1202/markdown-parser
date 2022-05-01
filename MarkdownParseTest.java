@@ -1,6 +1,6 @@
 //imports junit Assert methods
 import static org.junit.Assert.*;
-
+import org.junit.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 //imports junit library
-import org.junit.*;
 //creates new class called MarkdownParseTest
 public class MarkdownParseTest {
     //tester method

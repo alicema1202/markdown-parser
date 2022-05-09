@@ -17,9 +17,8 @@ public class MarkdownParseTest {
         //check that 2 is equal to 1 + 1
         assertEquals(2, 1 + 1);
     }
-    @Test
-
-    public void testFile2() throws IOException{
+   
+   public void testFile2() throws IOException{
         Path fileName = Path.of("test-file2.md");
         String content = Files.readString(fileName);
 
@@ -74,7 +73,7 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(content), empty);
     }
 
-   /* @Test
+    @Test
     //error
     public void testFile8() throws IOException{
         Path fileName = Path.of("test-file8.md");
@@ -82,7 +81,13 @@ public class MarkdownParseTest {
         ArrayList<String> empty = new ArrayList<>();
 
         assertEquals(MarkdownParse.getLinks(content), empty);
-    } */
-   
+    } 
+    @Test
+    public void fail() throws IOException{
+        Path fileName = Path.of("test-file8.md");
+        String content = Files.readString(fileName);
+        
+        assertEquals(MarkdownParse.getLinks(content), List.of("https://something.com","some-page.html"));
+    }
 
 }

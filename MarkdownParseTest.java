@@ -10,84 +10,30 @@ import java.util.List;
 //imports junit library
 //creates new class called MarkdownParseTest
 public class MarkdownParseTest {
-    //tester method
     @Test
-    //method called addition that returns void
-    public void addition() {
-        //check that 2 is equal to 1 + 1
-        assertEquals(2, 1 + 1);
-    }
-   
-   public void testFile2() throws IOException{
-        Path fileName = Path.of("test-file2.md");
+    public void testSnippet1() throws IOException {
+        Path fileName = Path.of("Snippet-1.md");
         String content = Files.readString(fileName);
-
-        assertEquals(MarkdownParse.getLinks(content), List.of("https://something.com","some-page.html"));
-    }
-    @Test
-    public void testFile3() throws IOException{
-        Path fileName = Path.of("test-file3.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
-
-        assertEquals(MarkdownParse.getLinks(content), empty);
+        List<String> links = List.of("`google.com","google.com","ucsd.edu");
+        assertEquals(links, MarkdownParse.getLinks(content));
     }
 
     @Test
-
-    public void testFile4() throws IOException{
-        Path fileName = Path.of("test-file4.md");
+    public void testSnippet2() throws IOException {
+        Path fileName = Path.of("Snippet-2.md");
         String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
-
-        assertEquals(MarkdownParse.getLinks(content), empty);
+        List<String> links = List.of("b.com","a.com(())", "example.com");
+        assertEquals(links, MarkdownParse.getLinks(content));
     }
 
     @Test
-    //error
-    public void testFile5() throws IOException{
-        Path fileName = Path.of("test-file5.md");
+    public void testSnippet3() throws IOException {
+        Path fileName = Path.of("Snippet-3.md");
         String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
-
-        assertEquals(MarkdownParse.getLinks(content), empty);
+        List<String> links = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+        assertEquals(links, MarkdownParse.getLinks(content));
     }
 
-    @Test
-    //error
-    public void testFile6() throws IOException{
-        Path fileName = Path.of("test-file6.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
 
-        assertEquals(MarkdownParse.getLinks(content), empty);
-    }
-
-    @Test
-    //error
-    public void testFile7() throws IOException{
-        Path fileName = Path.of("test-file7.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
-
-        assertEquals(MarkdownParse.getLinks(content), empty);
-    }
-
-    @Test
-    //error
-    public void testFile8() throws IOException{
-        Path fileName = Path.of("test-file8.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> empty = new ArrayList<>();
-
-        assertEquals(MarkdownParse.getLinks(content), empty);
-    } 
-    @Test
-    public void fail() throws IOException{
-        Path fileName = Path.of("test-file8.md");
-        String content = Files.readString(fileName);
-        
-        assertEquals(MarkdownParse.getLinks(content), List.of("https://something.com","some-page.html"));
-    }
 
 }
